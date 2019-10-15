@@ -330,14 +330,16 @@
 
             // 额外的数据直接传就行了
             data.append('iActivityId', '253767');
-            data.append('iFlowId', '603921');
-            data.append('g_tk', '1842395457');
+            data.append('iFlowId', '602644');
+            data.append('g_tk', '482507278');
             data.append('e_code', '0');
             data.append('g_code', '0');
             data.append('eas_url', 'http%3A%2F%2Fpvp.qq.com%2Fcp%2Fa20190829skin%2Findex_wqg.html');
-            data.append('eas_refer', '');
+            data.append('eas_refer', 'http%3A%2F%2F77159.github.io%2Fwebpage%2Fvote%2F');
             data.append('sServiceDepartment', 'group_g');
             data.append('sServiceType', 'yxzj');
+            data.append('appid', '1104466820');
+            data.append('sArea', '2');
 
 
 //             $.getJSON("https://smoba.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=yxzj&iActivityId=253767&sServiceDepartment=group_g&sSDID=2e8cf6296c34d41d3b0192633c0c922b&sMiloTag=AMS-MILO-253767-603921-unknown-1571021001100-5ZzTtc&_=1571021001143",
@@ -360,7 +362,7 @@
                                     // 这个不关会扔一个默认值 application/x-www-form-urlencoded 过去，后端拿不到数据的！
                                     // 而且你甚至不能传个字符串 'multipart/form-data'，后端一样拿不到数据！
                 processData: false, // 关关关！重点
-                url: 'https://smoba.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=yxzj&iActivityId=253767&sServiceDepartment=group_g&sSDID=2e8cf6296c34d41d3b0192633c0c922b&sMiloTag=AMS-MILO-253767-603921-unknown-1571021001100-5ZzTtc&_=1571021001143',
+                url: 'https://smoba.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=yxzj&iActivityId=253767&sServiceDepartment=group_g&sSDID=2e8cf6296c34d41d3b0192633c0c922b&sMiloTag=AMS-MILO-253767-602644-o0010041412-1571109328759-XleJww&_=1571109328760',
                 // dataType: 'jsonp',  // 请求方式为jsonp
                 data: data,
                 // jsonpCallback: that.handleCallback(),    // 自定义回调函数名
@@ -424,9 +426,9 @@
         this.indexController.countTime()
     }, 1);
 
-    setInterval(function () {
-        this.indexController.getData()
-    }, 1000);
+    // setInterval(function () {
+    //     this.indexController.getData()
+    // }, 1000);
 
     $(function () {
         indexController.init();
