@@ -118,7 +118,7 @@
         <div>排名</div>
         <div>英雄</div>
         <div>总票数</div>
-<!--        <div>与上一名差</div>-->
+        <div>与上一名差</div>
     </div>
 
     <div id="box">
@@ -274,6 +274,7 @@
             let html = '';
             let that = this;
             $.each(indexController.data.hero, function (i, b) {
+                
                 html +=
                     '<div class="details">' +
                         '<div>' + (i - (-1)) + '</div>' +
@@ -282,7 +283,7 @@
                             '<span>' + b.name + '</span>' +
                         '</div>' +
                         '<div>' + b.ticket + '</div>' +
-                        // '<div>' + (b.ticket) + '</div>' +
+                        '<div>' + b.prev + '</div>' +
                     '</div>';
             });
 
@@ -338,6 +339,21 @@
             data.append('sServiceDepartment', 'group_g');
             data.append('sServiceType', 'yxzj');
 
+
+//             $.getJSON("https://smoba.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=yxzj&iActivityId=253767&sServiceDepartment=group_g&sSDID=2e8cf6296c34d41d3b0192633c0c922b&sMiloTag=AMS-MILO-253767-603921-unknown-1571021001100-5ZzTtc&_=1571021001143",
+//
+//                 // [{type: 'post',
+//                 //
+//                 //     data: data,
+//                 // }],
+//
+//                 function(json){
+// //要求远程请求页面的数据格式为： ?(json_data) //例如： //?([{"_name":"湖南省","_regionId":134},{"_name":"北京市","_regionId":143}]) alert(json[0]._name);
+//
+//             console.log(json);
+//
+//             });
+
             $.ajax({
                 type: 'post',
                 contentType: false, // 关关关！必须得 false
@@ -345,7 +361,9 @@
                                     // 而且你甚至不能传个字符串 'multipart/form-data'，后端一样拿不到数据！
                 processData: false, // 关关关！重点
                 url: 'https://smoba.ams.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=yxzj&iActivityId=253767&sServiceDepartment=group_g&sSDID=2e8cf6296c34d41d3b0192633c0c922b&sMiloTag=AMS-MILO-253767-603921-unknown-1571021001100-5ZzTtc&_=1571021001143',
+                // dataType: 'jsonp',  // 请求方式为jsonp
                 data: data,
+                // jsonpCallback: that.handleCallback(),    // 自定义回调函数名
                 success: function (response) {
                     returnData = JSON.parse(response).modRet;
                     let arr = returnData.sOutValue2.split('|');
@@ -371,6 +389,15 @@
                     });
 
                     that.data.hero = that.data.hero.sort(that.compare('ticket')).reverse();
+
+                    that.data.hero.forEach((item, index) => {
+                        if(index == 0) {
+                            item['prev'] = 0;
+                        }else {
+                            item['prev'] = that.data.hero[index - 1].ticket - that.data.hero[index].ticket;
+                        }
+                    })
+
                     that.showView();
                 },
                 error: function (jqXHR) {
@@ -384,6 +411,11 @@
             return function (a, b) {
                 return a[arg] - b[arg];
             }
+        },
+
+
+        handleCallback: function () {
+
         }
 
     };
