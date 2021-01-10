@@ -47,25 +47,25 @@ let Index = {
 
         }
 
-        // d = [
-        //     {
-        //         "platformName": "ck0018新建月台1",
-        //         "reservationTotal": 15,
-        //         "finishedNumber": 13,
-        //         "achievementRate": 25
-        //     }, {
-        //         "platformName": "ck0018新建月台2",
-        //         "reservationTotal": 15,
-        //         "finishedNumber": 15,
-        //         "achievementRate": 29
-        //     }, {
-        //         "platformName": "ck0018新建月台4",
-        //         "reservationTotal": 40,
-        //         "finishedNumber": 23,
-        //         "achievementRate": 45
-        //     }
-        // ]
-        
+        d = [
+            {
+                "platformName": "死数据1",
+                "reservationTotal": 15,
+                "finishedNumber": 13,
+                "achievementRate": 25
+            }, {
+                "platformName": "死数据2",
+                "reservationTotal": 15,
+                "finishedNumber": 15,
+                "achievementRate": 29
+            }, {
+                "platformName": "死数据3",
+                "reservationTotal": 40,
+                "finishedNumber": 23,
+                "achievementRate": 45
+            }
+        ]
+
         console.log('data:', data);
         console.log('d:', d);
 
